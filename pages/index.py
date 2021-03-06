@@ -12,9 +12,6 @@ import joblib
 from app import app
 from assets.variables import STOPWORDS, COLUMN_NAMES, TIME_PERIODS, DAYS, MONTHS, CATEGORY_NAMES, SUB_CATEGORY_NAMES, COUNTRY_NAMES, LOCATION_NAMES
 
-# tokenizer = joblib.load('assets/tokenizer.pickle')
-# scaler = joblib.load('assets/scaler.pickle')
-
 
 class BlurbsBlock(tf.keras.Model):
     """
