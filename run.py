@@ -7,7 +7,7 @@ import joblib
 
 # Imports from this application
 from app import app, server
-from pages import index, predictions, insights, process
+from pages import index
 
 # Navbar docs: https://dash-bootstrap-components.opensource.faculty.ai/l/components/navbar
 navbar = dbc.NavbarSimple(
