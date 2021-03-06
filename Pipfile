@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+dash = "*"
+plotly = "*"
+scikit-learn = "==0.23.2"
+dash-bootstrap-components = "*"
+pandas = "*"
+tensorflow-cpu = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
