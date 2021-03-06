@@ -165,7 +165,7 @@ def get_prediction(name, blurb, usd_goal, creation_to_launch_days,
         model = KickstarterModel(max_words, embedding_dim)
         model.compile(optimizer=tf.keras.optimizers.Nadam(),
                       loss='binary_crossentropy')
-        model.load_weights('assets/Kickstarter_model/')
+        model.load_weights('assets/kickstarter_model/')
         prediction = model.predict([blurb, df])
         if prediction[0][0] > 0.5:
             return dcc.Markdown('{}% Sure your project will be successful!'.format(round(prediction[0][0]*100, 2)))
@@ -216,6 +216,8 @@ column1 = dbc.Col(
                      The macro and weighted average recall is 0.80 for a total of 28591 test set samples.
 
                      The macro and weighted average f1-score is 0.80 for a total of 28591 test set samples.
+
+                     ##### After hitting 'Make Prediction' it can take a minute or two
                      """),
         html.Br(), html.Br(),
         dcc.Input(id='name', type='text',
