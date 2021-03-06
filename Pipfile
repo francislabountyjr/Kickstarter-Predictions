@@ -11,6 +11,7 @@ dash-bootstrap-components = "*"
 pandas = "*"
 tensorflow-cpu = "*"
 gunicorn = "*"
+dill = "*"
 
 [dev-packages]
 
