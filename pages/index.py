@@ -169,6 +169,9 @@ def get_prediction(name, blurb, usd_goal, creation_to_launch_days,
                       loss='binary_crossentropy')
         model.load_weights('assets/kickstarter_model/')
         prediction = model.predict([blurb, df])
+        del(model)
+        del(tokenizer)
+        del(scaler)
         if prediction[0][0] > 0.5:
             return dcc.Markdown('{}% Sure your project will be successful!'.format(round(prediction[0][0]*100, 2)))
         else:
