@@ -110,26 +110,28 @@ def get_prediction(name, blurb, usd_goal, creation_to_launch_days,
                       )
     df = df.fillna(0)
 
-    df.iloc[0, df.columns.get_loc('name_length')] = len(name.split())
-    df.iloc[0, df.columns.get_loc('blurb_length')] = len(blurb.split())
-    df.iloc[0, df.columns.get_loc('usd_goal')] = usd_goal
-    df.iloc[0, df.columns.get_loc(
-        'creation_to_launch_days')] = creation_to_launch_days
-    df.iloc[0, df.columns.get_loc('campaign_days')] = campaign_days
-    df.iloc[0, df.columns.get_loc('category_{}'.format(category))] = 1
-    df.iloc[0, df.columns.get_loc('country_{}'.format(country))] = 1
-    df.iloc[0, df.columns.get_loc('sub_category_{}'.format(sub_category))] = 1
-    df.iloc[0, df.columns.get_loc('launch_day_{}'.format(launch_day))] = 1
-    df.iloc[0, df.columns.get_loc('deadline_day_{}'.format(deadline_day))] = 1
-    df.iloc[0, df.columns.get_loc('launch_month_{}'.format(launch_month))] = 1
-    df.iloc[0, df.columns.get_loc(
-        'deadline_month_{}'.format(deadline_month))] = 1
-    df.iloc[0, df.columns.get_loc('launch_time_{}'.format(launch_time))] = 1
-    df.iloc[0, df.columns.get_loc(
-        'deadline_time_{}'.format(deadline_time))] = 1
-    df.iloc[0, df.columns.get_loc('locations_{}'.format(location))] = 1
-
-    if df.isnull().values.any() and len(blurb) > 0:
+    try:
+        df.iloc[0, df.columns.get_loc('name_length')] = len(name.split())
+        df.iloc[0, df.columns.get_loc('blurb_length')] = len(blurb.split())
+        df.iloc[0, df.columns.get_loc('usd_goal')] = usd_goal
+        df.iloc[0, df.columns.get_loc(
+            'creation_to_launch_days')] = creation_to_launch_days
+        df.iloc[0, df.columns.get_loc('campaign_days')] = campaign_days
+        df.iloc[0, df.columns.get_loc('category_{}'.format(category))] = 1
+        df.iloc[0, df.columns.get_loc('country_{}'.format(country))] = 1
+        df.iloc[0, df.columns.get_loc('sub_category_{}'.format(sub_category))] = 1
+        df.iloc[0, df.columns.get_loc('launch_day_{}'.format(launch_day))] = 1
+        df.iloc[0, df.columns.get_loc('deadline_day_{}'.format(deadline_day))] = 1
+        df.iloc[0, df.columns.get_loc('launch_month_{}'.format(launch_month))] = 1
+        df.iloc[0, df.columns.get_loc(
+            'deadline_month_{}'.format(deadline_month))] = 1
+        df.iloc[0, df.columns.get_loc('launch_time_{}'.format(launch_time))] = 1
+        df.iloc[0, df.columns.get_loc(
+            'deadline_time_{}'.format(deadline_time))] = 1
+        df.iloc[0, df.columns.get_loc('locations_{}'.format(location))] = 1
+    except Exception as e:
+        return dcc.Markdown('All fields must be filled!')
+    if df.isnull().values.any() or len(blurb) < 1:
         return dcc.Markdown('All fields must be filled!')
     else:
         # text pre-processing
